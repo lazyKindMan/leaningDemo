@@ -13,7 +13,7 @@ import java.util.Map;
 /**
  * @author long
  * @version 1.0
- * 通过反射加载一个类的所有成员信息
+ * Load all member information of a class through reflection
  */
 public class LoadClassUtils {
 

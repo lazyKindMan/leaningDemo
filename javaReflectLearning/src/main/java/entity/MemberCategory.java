@@ -3,7 +3,8 @@ package entity;
 import org.apache.commons.lang.StringUtils;
 
 /**
- * 成员变量枚举类
+ * Member variable enumeration class
+ * name mapping the apidoc type
  */
 public enum MemberCategory {
     INTEGER("{Number}","Integer"),

@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 成员变量值
+ * Member variable value
  */
 public class MemberValues {
     MemberCategory memberCategory;
