@@ -22,15 +22,27 @@ public class LoadClassUtils {
      * @param clz 需要获取的对象
      * @return 该类的所有成员变量信息
      */
-    public static MemberValues getAllMember(Class clz) throws IllegalAccessException {
+    public static MemberValues getAllMember(Class clz, MemberValues... sonMembers) throws IllegalAccessException {
+        if(clz == null || clz.getName() == "java.lang.Object"){
+            return null;
+        }
+
         MemberCategory thisCategory = getClassCategory(clz);
         if(MemberCategory.isPrimitiveCategory(thisCategory)){
             return new MemberValues(thisCategory);
         }
         else{
+            MemberValues memberValues = null;
             //如果为类则反射其所有类型，如果为列表或map则获取其泛类的成员类型
-            MemberValues memberValues = new MemberValues(thisCategory);
+            if(sonMembers.length > 0){
+                memberValues = sonMembers[0];
+            }
+            if(memberValues == null){
+                memberValues = new MemberValues(thisCategory);
+            }
             if(thisCategory == MemberCategory.OBJECT){
+                // 优先扫描父类
+                getAllMember(clz.getSuperclass(), memberValues);
                 Field[] fields = clz.getDeclaredFields();
                 for(Field field : fields){
                     // 剔除内部类，静态变量

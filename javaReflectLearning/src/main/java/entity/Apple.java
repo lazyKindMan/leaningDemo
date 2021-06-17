@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 @Data
-public class Apple {
+public class Apple extends testP{
     private Integer price;
     private List<String> priceTag;
     private Map<String, testEntity> testMap;
